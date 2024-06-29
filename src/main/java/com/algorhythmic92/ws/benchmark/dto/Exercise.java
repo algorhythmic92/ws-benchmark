@@ -1,22 +1,34 @@
 package com.algorhythmic92.ws.benchmark.dto;
 
-import com.algorhythmic92.ws.benchmark.enumeration.ExerciseVariation;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Data
-@Builder
+@Entity
+@Table(name = "exercises")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Exercise {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
-    private ExerciseVariation variation;
-    private Integer weight;
+
+    @Column(nullable = false)
+    private String variation;
+
+    @Column(nullable = false)
     private Integer reps;
+
+    @Column(nullable = false)
+    private Integer weight;
+
+    @Column(nullable = false)
     private LocalDate dateAchieved;
 }
