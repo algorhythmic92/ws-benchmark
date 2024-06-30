@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "exercises")
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Exercise {
 
     @Id
@@ -31,4 +33,21 @@ public class Exercise {
 
     @Column(nullable = false)
     private LocalDate dateAchieved;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Exercise exercise = (Exercise) o;
+        return Objects.equals(name, exercise.name) &&
+                Objects.equals(variation, exercise.variation) &&
+                Objects.equals(reps, exercise.reps) &&
+                Objects.equals(weight, exercise.weight) &&
+                Objects.equals(dateAchieved, exercise.dateAchieved);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, variation, reps, weight, dateAchieved);
+    }
 }
