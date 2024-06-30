@@ -1,5 +1,8 @@
 package com.algorhythmic92.ws.benchmark.enumeration;
 
+import lombok.Getter;
+
+@Getter
 public enum ExerciseVariation {
     BARBELL("Barbell"),
     CABLE("Cable"),
