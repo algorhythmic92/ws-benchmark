@@ -106,6 +106,16 @@ class ExerciseControllerIT {
     }
 
     @Test
+    void getExerciseById_notFound() throws Exception {
+        MvcResult result = mockMvc.perform(get("/exercise/{id}", 123L)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andReturn();
+
+        assertEquals("Exercise with ID 123 not found", result.getResponse().getContentAsString());
+    }
+
+    @Test
     public void getAllExercises() throws Exception {
         MvcResult result = mockMvc.perform(get("/exercise")
                         .accept(MediaType.APPLICATION_JSON))
@@ -139,11 +149,30 @@ class ExerciseControllerIT {
     }
 
     @Test
+    public void updateExercise_notFound() throws Exception {
+        MvcResult result = mockMvc.perform(put("/exercise/{id}", 123L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonFileReader.readJsonFileAsString("src/test/resources/request/updateExercise.json")))
+                .andExpect(status().isNotFound())
+                .andReturn();
+        assertEquals("Exercise with ID 123 not found", result.getResponse().getContentAsString());
+    }
+
+    @Test
     public void deleteExercise() throws Exception {
         mockMvc.perform(delete("/exercise/{id}", 1L))
                 .andExpect(status().isNoContent());
 
         assertFalse(isExercisePresent(FLAT_BENCH_PRESS));
+    }
+
+    @Test
+    public void deleteExercise_notFound() throws Exception {
+        MvcResult result = mockMvc.perform(delete("/exercise/{id}", 123L))
+                .andExpect(status().isNotFound())
+                .andReturn();
+
+        assertEquals("Exercise with ID 123 not found", result.getResponse().getContentAsString());
     }
 
     private boolean isExercisePresent(Exercise exerciseToCheck) {
