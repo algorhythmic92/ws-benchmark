@@ -1,5 +1,6 @@
 package com.algorhythmic92.ws.benchmark.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,7 @@ public class Exercise {
     private Integer weight;
 
     @Column(nullable = false)
+    @JsonFormat(pattern = "MM/dd/yyyy")
     private LocalDate dateAchieved;
 
     @Override
