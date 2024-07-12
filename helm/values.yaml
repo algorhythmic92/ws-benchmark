@@ -1,0 +1,12 @@
+name: ws-benchmark
+
+image:
+  name: ws-benchmark
+  tag: latest
+
+container:
+  port: 8080
+
+secrets:
+  - name: ws-benchmark
+    key: BENCHMARK_DB_PASSWORD
