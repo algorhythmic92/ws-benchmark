@@ -1,0 +1,18 @@
+apiVersion: v2
+name: ws-benchmark
+description: A Helm chart for ws-benchmark application
+type: application
+
+version: 1.0.0
+appVersion: 1.0.0
+
+keywords:
+  - ws-benchmark
+  - benchmark
+
+maintainers:
+  - name: Quinn Morrison
+    email: quinncodes92@gmail.com
+
+sources:
+  - https://github.com/your-repo/ws-benchmark
