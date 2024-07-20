@@ -92,5 +92,12 @@
       </plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+    <repository>
+      <id>ws-benchmark</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/algorhythmic92/ws-benchmark</url>
+    </repository>
+  </distributionManagement>
 
 </project>
