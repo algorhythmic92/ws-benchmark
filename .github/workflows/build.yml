@@ -4,8 +4,10 @@
 name: Maven Package & Docker Image CI
 
 on:
-  push:
+  pull_request:
     branches: ['main']
+    types:
+      - closed
   release:
     types: [created]
 env:
