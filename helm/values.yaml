@@ -8,5 +8,8 @@ container:
   port: 8080
 
 secrets:
-  - name: ws-benchmark
-    key: BENCHMARK_DB_PASSWORD
+  name: ws-benchmark
+  keys:
+    - BENCHMARK_DB_PASSWORD
+    - BENCHMARK_WEB_GOOGLE_OAUTH_CLIENT_ID
+    - BENCHMARK_WEB_GOOGLE_OAUTH_CLIENT_SECRET

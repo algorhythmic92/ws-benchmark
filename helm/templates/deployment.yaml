@@ -28,10 +28,11 @@ spec:
             - name: ws-benchmark
               mountPath: /config
           env:
-          {{- range .Values.secrets }}
-          - name: {{ .key }}
+          {{- $name := .Values.secrets.name }}
+          {{- range .Values.secrets.keys }}
+          - name: {{ . }}
             valueFrom:
               secretKeyRef:
-                name: {{ .name }}
-                key: {{ .key }}
+                name: {{ $name }}
+                key: {{ . }}
           {{- end }}

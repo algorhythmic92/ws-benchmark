@@ -19,3 +19,14 @@ data:
         hibernate:
           ddl-auto: update
         show-sql: true
+      security:
+        oauth2:
+          client:
+            registration:
+              google:
+                provider: google
+                client-id: ${BENCHMARK_WEB_GOOGLE_OAUTH_CLIENT_ID}
+                client-secret: ${BENCHMARK_WEB_GOOGLE_OAUTH_CLIENT_SECRET}
+                authorization-grant-type: authorization_code
+                scope: openid,profile
+                redirectUri: http://localhost:8080/login/oauth2/code/google
